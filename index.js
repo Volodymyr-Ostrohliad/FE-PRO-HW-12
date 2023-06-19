@@ -1,21 +1,24 @@
 "use strict";
 
-function sum(x) {
-  if (typeof x !== 'number' || !Number.isInteger(x) || x < 0) {
-    console.error('Invalid n');
-  } else {
-    if (total === null) {
-      return total = x;
+const sums = (function () {
+  let total = null;
+
+  function sum(x) {
+    if (typeof x !== 'number' || !Number.isInteger(x) || x < 0) {
+      console.error('Invalid n');
+    } else {
+      if (total === null) {
+        total = x;
+      } else {
+        total += x;
+      }
     }
-    else {
-      total += x;
-      return total
-    }
+    return total;
   }
 
-}
+  return sum;
+})();
 
-let total = null
-console.log(sum(3));   // 3
-console.log(sum(5));   // 8
-console.log(sum(20));  // 28
+console.log(sums(3));   // 3
+console.log(sums(5));   // 8
+console.log(sums(20));  // 28
